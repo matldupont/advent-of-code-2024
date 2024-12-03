@@ -9,7 +9,7 @@ const isOutsideRange = (diff) => {
   return Math.abs(diff) > 3 || Math.abs(diff) < 1;
 };
 
-const isDirectionChanged = (direction, diff) => {
+const hasDirectionChanged = (direction, diff) => {
   return (direction > 0 && diff < 0) || (direction < 0 && diff > 0);
 };
 
@@ -28,7 +28,7 @@ const isSafe = (report) => {
       if (typeof direction === 'undefined') {
         direction = diff > 0 ? 1 : -1; // set direction
       } else {
-        if (isDirectionChanged(direction, diff)) {
+        if (hasDirectionChanged(direction, diff)) {
           return false; // direction changed: down to up
         }
       }
